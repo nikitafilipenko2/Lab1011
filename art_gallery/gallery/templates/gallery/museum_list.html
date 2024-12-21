@@ -1,0 +1,24 @@
+<h1>Список музеев</h1>
+<a href="{% url 'index' %}">На главную</a>
+<a href="{% url 'museum_add' %}">Добавить музей</a>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Город</th>
+        <th>Страна</th>
+        <th>Действия</th>
+    </tr>
+    {% for museum in museums %}
+    <tr>
+        <td>{{ museum.id }}</td>
+        <td>{{ museum.name }}</td>
+        <td>{{ museum.city }}</td>
+        <td>{{ museum.country }}</td>
+        <td>
+            <a href="{% url 'museum_edit' museum.id %}">Редактировать</a> | <a href="{% url 'museum_delete' museum.id %}">Удалить</a></td>
+
+        </td>
+    </tr>
+    {% endfor %}
+</table>
